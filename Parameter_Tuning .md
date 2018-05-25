@@ -144,7 +144,10 @@ if __name__ == '__main__':
 
     xgbBO.maximize(init_points=init_points, n_iter=num_iter)
 ```
-!
+
+![result](https://github.com/jun-sato/parameter_tuning/blob/master/result3.png?raw=true)
+![result2](https://github.com/jun-sato/parameter_tuning/blob/master/result2.png?raw=true)
+
 
 ただし、ベイズ最適化には弱点もいくつかあって、
 
