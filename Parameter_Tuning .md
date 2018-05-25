@@ -144,6 +144,8 @@ if __name__ == '__main__':
 
     xgbBO.maximize(init_points=init_points, n_iter=num_iter)
 ```
+!
+
 ただし、ベイズ最適化には弱点もいくつかあって、
 
 * カテゴリー変数の場合にうまくいかない。
