@@ -2,7 +2,7 @@
 機械学習を行う際に大事なのがパラメーターの調整です。
 今まで適当にデフォルトの値でそのままやったりGridearchで探したりしていましたが、結構時間かかるので他の有効な方法を探して、手元で実際に動かして見ました。[こちら](http://neupy.com/2016/12/17/hyperparameter_optimization_for_neural_networks.html)の資料がわかりやすかったです。(図もこちらのものを引用しました)
 
-##Bayesian Optimization
+## Bayesian Optimization
 **Bayesian Optimization**はパラメーターを**x**、評価値(精度とか)をyとして
 
 <math display="block">
@@ -190,6 +190,7 @@ TPEでもExpected Improvement関数の下のように定義します。精度良
             <mi>x</mi>
             <mo>)</mo>
         </mrow>
+        /
         <mrow>
             <mo>&af;</mo>
             <mi>g</mi>
