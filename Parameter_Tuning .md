@@ -225,3 +225,8 @@ hyperopt_parameters = {'min_child_weight': hp.uniform('min_child_weight',1,20),
 ![loss](https://github.com/jun-sato/parameter_tuning/blob/master/loss.jpg?raw=true)
 
 
+![best_param](https://github.com/jun-sato/parameter_tuning/blob/master/best_param.png?raw=true)
+
+
+logloss最小値は0.4749でした。あれ、bayesian optimizaationより悪い、、、bayesianではmax_depthを整数に限定しなかったからかも、、
+でも自分で手動でやった時は0.6とかだったんで、パラメーターチューニングの時にはこれからこれ使っていこうと思います。あとこのxgboost動かすのに8コアCPU使ってそれぞれ半日くらい回しました。GPU使ってたらもうちょい早かったと思うのですが、きちんとbuildとmakeしてもうまくいきませんでした。また挑戦します。
