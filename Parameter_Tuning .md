@@ -150,7 +150,7 @@ if __name__ == '__main__':
 ![result](https://github.com/jun-sato/parameter_tuning/blob/master/result.png?raw=true)
 ![result2](https://github.com/jun-sato/parameter_tuning/blob/master/result2.png?raw=true)
 
-だいたい15回くらいの試行でloglossが0.46136まで下がりました。
+だいたい15回くらいの試行でloglossが0.46136まで下がりました。やってから気づいたんですが、max_depthとかって整数の値しかとらないですね、、、
 
 ただし、ベイズ最適化には弱点もいくつかあって、
 
@@ -205,6 +205,19 @@ TPEでもExpected Improvement関数の下のように定義します。精度良
 ![prob dist](http://neupy.com/_images/tpe-sampled-candidates.png)
 ![acq](http://neupy.com/_images/tpe-expected-improvement.png)
 
-こっちも実装して見ます。Pythonではhyperoptというライブラリがあってpipで入ります。
+こっちも実装してみます。Pythonではhyperoptというライブラリがあってpipで入ります。
 
+```pip install hyperopt```
+
+最適化するパラメータはbayesian optimizationと同じやつにしてみました。
+
+```
+hyperopt_parameters = {'min_child_weight': hp.uniform('min_child_weight',1,20),
+                        'colsample_bytree': hp.uniform('colsample_bytree',0.1, 1),
+                        'max_depth': hp.choice('max_depth',np.arange(5, 15)),
+                        'subsample': hp.uniform('subsample',0.5, 1),
+                        'gamma': hp.uniform('gamma',0, 10),
+                        'alpha': hp.uniform('alpha',0, 10),
+                        }
+```
 
