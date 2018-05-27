@@ -221,7 +221,7 @@ hyperopt_parameters = {'min_child_weight': hp.uniform('min_child_weight',1,20),
                         }
 ```
 
-###結果
+### 結果
 ![loss](https://github.com/jun-sato/parameter_tuning/blob/master/loss.jpg?raw=true)
 
 
