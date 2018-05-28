@@ -209,6 +209,10 @@ TPEでもExpected Improvement関数の下のように定義します。精度良
 こっちも実装してみます。Pythonではhyperoptというライブラリがあってpipで入ります。
 
 ```pip install hyperopt```
+```
+import hyperopt
+from hyperopt import hp, tpe, Trials, fmin
+```
 
 最適化するパラメータはbayesian optimizationと同じやつにしてみました。
 
@@ -220,6 +224,29 @@ hyperopt_parameters = {'min_child_weight': hp.uniform('min_child_weight',1,20),
                         'gamma': hp.uniform('gamma',0, 10),
                         'alpha': hp.uniform('alpha',0, 10),
                         }
+```
+最適化する関数の指定
+
+```
+def objective(args):
+    classifier = xgb.XGBClassifier(**args)
+    stratifiedkfold = StratifiedKFold(n_splits=5)
+    result = cross_val_score(classifier, train.drop(['id','target'],axis = 1), train.target, cv=stratifiedkfold,scoring='neg_log_loss')
+    return -result.mean()
+```
+実行！
+
+```
+max_evals = 50
+trials = Trials() # 実行結果を格納するインスタンス
+
+best = fmin(
+    objective,
+    hyperopt_parameters,
+    algo = tpe.suggest,
+    max_evals =max_evals,
+    trials = trials,
+    verbose = 1)
 ```
 
 ### 結果
